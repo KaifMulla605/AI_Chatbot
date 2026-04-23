@@ -1,0 +1,110 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey", "Good morning", "Good evening", "Is anyone there?", "Hey there"],
+      "responses": [
+        "Hello!",
+        "Hi there!",
+        "Hey! How can I help you today?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "Goodbye", "See you", "Take care", "Catch you later"],
+      "responses": [
+        "Goodbye!",
+        "See you soon!",
+        "Take care!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "Much appreciated", "Thanks a lot"],
+      "responses": [
+        "You're welcome!",
+        "Happy to help!",
+        "No problem!"
+      ]
+    },
+    {
+      "tag": "hours",
+      "patterns": ["What are your hours?", "When are you open?", "Working hours", "Business hours"],
+      "responses": [
+        "We are open from 9 AM to 6 PM, Monday to Friday."
+      ]
+    },
+    {
+      "tag": "location",
+      "patterns": ["Where are you located?", "Your address?", "Where is your office?", "Location"],
+      "responses": [
+        "Our office is located in the city center.",
+        "We are located in the main business district."
+      ]
+    },
+    {
+      "tag": "services",
+      "patterns": ["What services do you offer?", "What can you do?", "Your services", "How can you help me?"],
+      "responses": [
+        "We provide AI solutions, data analytics, and customer support services.",
+        "Our services include AI development and data analytics consulting."
+      ]
+    },
+    {
+      "tag": "pricing",
+      "patterns": ["What is the price?", "How much does it cost?", "Pricing details", "Do you have packages?"],
+      "responses": [
+        "Pricing depends on the service. Please contact our sales team for details.",
+        "Our pricing varies based on requirements."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": ["How can I contact you?", "Customer support number", "Contact details", "Support email"],
+      "responses": [
+        "You can contact us via email at support@example.com.",
+        "Our support team is available at support@example.com."
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": ["Can you help me?", "I need help", "Help me", "Support"],
+      "responses": [
+        "Sure! Tell me what you need help with.",
+        "I'm here to assist you. What do you need?"
+      ]
+    },
+    {
+      "tag": "identity",
+      "patterns": ["Who are you?", "What are you?", "Are you a bot?", "What is your name?"],
+      "responses": [
+        "I am an AI chatbot designed to assist users.",
+        "I'm your virtual assistant."
+      ]
+    },
+    {
+      "tag": "creator",
+      "patterns": ["Who created you?", "Who built you?", "Who is your developer?"],
+      "responses": [
+        "I was created by a developer using Python and machine learning.",
+        "I was built using AI technologies."
+      ]
+    },
+    {
+      "tag": "weather",
+      "patterns": ["How is the weather?", "Weather today", "Is it raining?", "Temperature today"],
+      "responses": [
+        "I currently don't have live weather data, but you can check a weather app.",
+        "Please check a weather website for the latest update."
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": ["Random question", "Blah blah", "I don't know what to say"],
+      "responses": [
+        "I'm not sure I understand. Could you rephrase?",
+        "Sorry, I didn't get that. Can you ask differently?"
+      ]
+    }
+  ]
+}
