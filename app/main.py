@@ -1,37 +1,55 @@
 import pickle
 import random
+import os
 import nltk
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
 
-nltk.download("punkt")
+nltk.download('punkt')
 
 app = FastAPI(title="Chatbot API")
 
-# Serve static files
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# ===== PATH SETUP =====
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Load model
-with open("model/chatbot_model.pkl", "rb") as f:
+model_path = os.path.join(BASE_DIR, "model", "chatbot_model.pkl")
+static_path = os.path.join(BASE_DIR, "static")
+
+# ===== LOAD MODEL =====
+with open(model_path, "rb") as f:
     vectorizer, model, intents = pickle.load(f)
 
-class ChatInput(BaseModel):
+# ===== STATIC FILES =====
+if os.path.exists(static_path):
+    app.mount("/static", StaticFiles(directory=static_path), name="static")
+
+# ===== REQUEST FORMAT =====
+class UserInput(BaseModel):
     message: str
 
-@app.get("/", response_class=HTMLResponse)
-def home():
-    with open("static/index.html", "r") as f:
-        return f.read()
-
+# ===== CHAT ENDPOINT =====
 @app.post("/chat")
-def chat(data: ChatInput):
-    X = vectorizer.transform([data.message])
+def chat(user_input: UserInput):
+
+    text = user_input.message
+
+    X = vectorizer.transform([text])
+
     tag = model.predict(X)[0]
 
     for intent in intents["intents"]:
         if intent["tag"] == tag:
-            return {"response": random.choice(intent["responses"])}
+            return {
+                "response": random.choice(intent["responses"])
+            }
 
-    return {"response": "Sorry, I didn't understand that."}
+    return {
+        "response": "Sorry, I didn't understand that."
+    }
+
+# ===== ROOT TEST =====
+@app.get("/")
+def root():
+    return {"message": "Chatbot API is running!"}
